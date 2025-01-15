@@ -2,13 +2,15 @@
 # Cloud Functions
 # ---------------------------------------------------------------------
 resource "google_cloudfunctions_function" "TerraFailCloudFunctions" {
+  # Drata: Specify a Service Account in [google_cloudfunctions_function.service_account_email] to avoid using default Service Accounts
+  # Drata: Configure [google_cloudfunctions_function.labels] to ensure that organization-wide label conventions are followed.
   name                          = "TerraFailCloudFunctions"
   description                   = "TerraFailCloudFunctions description"
-  runtime                       = "nodejs16"
+  runtime                       = "nodejs20"
   available_memory_mb           = 128
   trigger_http                  = true
   entry_point                   = "helloGET"
-  ingress_settings              = "ALLOW_ALL"
+  ingress_settings              = "ALLOW_INTERNAL_AND_GCLB"
   vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
 }
 
