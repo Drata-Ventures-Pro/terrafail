@@ -19,7 +19,7 @@ resource "aws_db_instance" "TerraFailDB_instance" {
   iam_database_authentication_enabled = false
   multi_az                            = false
   publicly_accessible                 = true
-  storage_encrypted                   = false
+  storage_encrypted                   = true
   backup_retention_period             = 20
 }
 
